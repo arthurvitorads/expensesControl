@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Login - Controle de Gastos</title>
+</head>
+<body>
+    <div class="content">
+        <h1>CONTROLE DE GASTOS</h1>
+        <form>
+            <div>
+                <div class="fLabel"><label>Email:</label></div>
+                <input type="email" placeholder="Email@gmail.com" required id="mailUser">
+            </div>
+            <div>
+                <div class="fLabel"><label>Senha:</label></div>
+                <input type="password" placeholder="Sua senha" required id="passwordUser">
+            </div>
+            <div>
+                <button type="button" class="bClear">Recuperar senha</button>
+            </div>
+            <div>
+                <button type="submit" class="bSolid">Entrar</button>
+            </div>
+            <div>
+                <button type="submit" class="bOutline">Registrar</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.7.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.7.3/firebase-auth-compat.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAk-cBBO_Yd_iKmYH63vvWhWeQoVtt7Cgw",
+        authDomain: "gastoscontrole-52713.firebaseapp.com",
+        projectId: "gastoscontrole-52713",
+        storageBucket: "gastoscontrole-52713.firebasestorage.app",
+        messagingSenderId: "448561432012",
+        appId: "1:448561432012:web:3bc9e94af78b7554cac969"
+    };
+    firebase.initializeApp(firebaseConfig)
+    firebase.auth().signInWithEmailAndPassword("arhturvitorsilvio@gmail.com", "arthur23").then(response => {
+        console.log('success', response)
+    }).catch(error => {
+        console.log('error', error)
+    });
+    </script>
+</body>
+</html>
