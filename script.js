@@ -1,23 +1,32 @@
-let bLogin = document.querySelector(".bSolid")
-let bRegister = document.querySelector(".bOutline")
-let iPassword = document.querySelector("#passwordUser")
-let iEmail = document.querySelector("#mailUser")
+let buttonLogin = document.querySelector(".bSolid")
+let buttonRegister = document.querySelector(".bOutline")
+let inputMail= document.querySelector("#mailUser")
+let inputPassword= document.querySelector("#passwordUser")
 
-
-bRegister.addEventListener("click", function(){
-    window.location.href = "pages/register/register.html"
+buttonRegister.addEventListener("click", function(){
+    showLoading()
 })
 
-bLogin.addEventListener("click", function(){
-    {
-        if (iEmail.value == "admin" && iPassword.value == "admin"){
-            window.location.href = "pages/home/home.html"
-        }else{
-            alert("Usuário ou senha incorreta!")
-        }
-        
+buttonLogin.addEventListener("click", function(){
+    showLoading()
+    firebase.auth().signInWithEmailAndPassword(inputMail.value, inputPassword.value).then(response => {
+        window.location.href = "pages/home/home.html"
+    }).catch(error => {
+        alert(messagesErros(error))
+    }); 
+})
+
+
+
+function messagesErros(error){
+    if (error.code == "auth/invalid-email"){
+        return "Insira um email válido!"
+    }else if(error.code == "auth/missing-password"){
+        return "Insira uma senha válida!"
+    }else if(error.code == "auth/invalid-credential"){
+        return "Email ou senha incorreto!"
+    }else if(error.code == ""){
+    }else {
+        return error.message
     }
-    
-})
-
-
+}
