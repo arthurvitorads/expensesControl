@@ -1,7 +1,7 @@
 <h1 align="center">Controle de Gastos</h1>
 
 <p align="center">
-  Projeto feito para
+  Projeto feito para estudo
 </p>
 
 <p align="center">
